@@ -499,19 +499,25 @@ def _project_vjp(
         result: dict[str, object] = {}
         if down:
             if "Obs" in wrt:
-                result["Obs"] = projector @ g @ projector.conj().T
+                result["Obs"] = _input_gradient(
+                    observable, projector @ g @ projector.conj().T
+                )
             if "proj" in wrt:
-                result["proj"] = (
+                result["proj"] = _input_gradient(
+                    projector,
                     observable @ projector @ g.conj().T
-                    + observable.conj().T @ projector @ g
+                    + observable.conj().T @ projector @ g,
                 )
         else:
             if "Obs" in wrt:
-                result["Obs"] = projector.conj().T @ g @ projector
+                result["Obs"] = _input_gradient(
+                    observable, projector.conj().T @ g @ projector
+                )
             if "proj" in wrt:
-                result["proj"] = (
+                result["proj"] = _input_gradient(
+                    projector,
                     g @ projector @ observable.conj().T
-                    + g.conj().T @ projector @ observable
+                    + g.conj().T @ projector @ observable,
                 )
         return result
 
