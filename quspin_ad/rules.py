@@ -138,6 +138,8 @@ def _coherent_linearization(value: np.ndarray, a: object, da: object) -> np.ndar
     # Real-linear convention: |a|^2 contributes -Re(conj(a) da), while a^k
     # contributes k da/a.  This also specializes correctly to real ``a``.
     daa = np.asarray(da)
+    if daa.ndim != 0:
+        raise TypeError("coherent_state AD requires a scalar tangent da")
     logarithmic = -np.real(np.conj(aa) * daa) + k * daa / aa
     return value * logarithmic
 

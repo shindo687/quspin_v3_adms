@@ -4,9 +4,12 @@
 
 This sidecar targets the public API of QuSpin **1.0.1**, corresponding to
 official upstream commit `5bf9e5b266e6d8b70e5cf5973c7c7d59d62e412f`.  The
-complete inventory is in `api_inventory.json`; 64 generated API entries were
-cross-checked against `upstream/docs/generated/`, package `__all__` exports,
-source call paths, tests and examples.
+complete inventory is in `api_inventory.json`; its 76 public entries comprise
+64 generated-document APIs plus 12 public re-exports/aliases discovered from
+package `__all__` exports and source call paths.  The inventory was cross-checked
+against the upstream generated docs, exports, tests and examples.  Alias entries
+carry an `alias_of` field and an explicit status, so every exported name has a
+decision even when it shares one rule with its canonical callable.
 
 The sidecar uses `chainrules==0.1.0` when present and bundles a small compatible
 fallback for isolated/offline installs; both expose the same `jvp`, `vjp`,
@@ -116,8 +119,12 @@ called through AD.
 ## Verification contract
 
 For each implemented entry, tests cover primal parity, analytic JVP and VJP
-against multi-step central-difference oracles, JVP/VJP duality, active-input
-selection, zero directions, reusable pullbacks, and invalid-domain behavior.
+against a five-step central-difference scan (`1e-4`, `3e-5`, `1e-5`, `3e-6`,
+`1e-6`), JVP/VJP duality, active-input selection, zero directions, reusable
+pullbacks, and invalid-domain behavior.  The 7 canonical implemented callables
+are exposed through 9 inventory entries because the measurements module also
+re-exports `ED_state_vs_time` and `project_op`; these aliases are tested through
+their canonical rules.
 The complete test command and environment are recorded in
 `tasks/task-8/artifacts/test_receipt.txt`; installation is checked in a clean
 virtual environment in `tasks/task-8/artifacts/install_receipt.txt`.
