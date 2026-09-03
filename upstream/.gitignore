@@ -1,0 +1,85 @@
+# compliled python code #
+*.pyc
+*.pyf
+*.pyd
+*.pdf
+
+
+*.cpp
+*.cxx
+*.c 
+
+oputils_impl.h
+expm_multiply_parallel_impl.h
+
+failed.txt
+
+./examples/scripts/*.pdf
+
+photon_test.py
+compile.py
+compile_cython.sh
+test_photon.py
+photon_bug.py
+test_photon_old.py
+test_observables.py
+test.py
+photon_test.py
+compile.py
+compile_cython.py
+getvec_check.py
+TFIM_imag_time.py
+cohereht_state.py
+energy_bug.py
+photon_only.py
+semiclassical.py
+semiclassical_ETH.py
+spin_only.py
+spin_photon.py
+exp_op_test.py
+~/Sent_test.py
+~/diag_ensemble_test.py 
+
+
+submit.sh
+spin_only_analysis.py
+
+install.txt
+
+
+doctrees/
+
+
+*.so
+
+
+
+
+
+
+# pure fortran source files #
+*.f90
+
+# cython source file #
+#*.pyx
+
+# backup files from gedit #
+*~
+# invisible files
+.*
+
+
+
+# Python egg metadata, regenerated from source files by setuptools.
+/*.egg-info
+
+# build directories
+build/
+_build/
+bin/
+dist/
+
+
+
+# test script
+test.py
