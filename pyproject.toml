@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "quspin-ad"
+version = "0.1.0"
+description = "ChainRules automatic-differentiation rules for QuSpin"
+readme = "README.md"
+requires-python = ">=3.11,<3.15"
+dependencies = [
+  "quspin==1.0.1",
+  "numpy>=2.0",
+]
+authors = [{name = "QuSpin AD contributors"}]
+license = {text = "MIT"}
+
+[tool.hatch.build.targets.wheel]
+packages = ["quspin_ad"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
